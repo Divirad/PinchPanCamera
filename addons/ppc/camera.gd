@@ -61,9 +61,6 @@ func handle_zoom(event):
 				last_dist = distance
 				current_dist = distance
 			else:
-				#position.x = position.x + (points[0].start_pos.x - points[0].pos.x) * zoom.x * 0.01
-				#position.y = position.y + (points[0].start_pos.y - points[0].pos.y) * zoom.y * 0.01
-	
 				current_dist = last_dist - distance
 				last_dist = distance
 			emit_signal("on_zoom", current_dist)
@@ -73,12 +70,6 @@ func zoom_this(val):
 		var temp_zoom = current_dist * zoom_rate
 		zoom.x = clamp(zoom.x + temp_zoom * .025, 0.4, 2)
 		zoom.y = clamp(zoom.y + temp_zoom * .025, 0.4, 2)
-		
-func get_position():
-	return position 
-
-func set_position(pos):
-	position = pos
 	
 func get_camera_center():
     var vtrans = get_canvas_transform()
