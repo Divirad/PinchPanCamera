@@ -49,6 +49,7 @@ func _input(event):
 			if camera.zoom <= max_zoom:
 				camera.zoom += Vector2(0.1, 0.1)
 	
+	# Handle Touch
 	if event is InputEventScreenTouch:
 		if event.is_pressed() and !already_pressed:
 			start_position = get_norm_coordinate()
