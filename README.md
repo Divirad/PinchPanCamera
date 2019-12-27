@@ -1,4 +1,4 @@
-# PinchPanCamera
+# PinchPanCamera ![](https://github.com/Divirad/PinchPanCamera/blob/master/addons/ppc/icon.png?raw=true)
 ![](https://img.shields.io/github/issues/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/forks/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/stars/Divirad/PinchPanCamera)
