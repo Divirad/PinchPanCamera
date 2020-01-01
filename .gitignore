@@ -8,14 +8,4 @@ export_presets.cfg
 .mono/
 data_*/
 
-addons/github-integration/*
-
-project.godot
-
 icon.png.import
-
-default_env.tres
-
-icon.png
-
-test.tscn
