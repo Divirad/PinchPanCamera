@@ -15,7 +15,7 @@
 Godot Plugin for a touchscreen optimized camera control system for common 2D top-down strategy games. 
 (Works also with mouse when `Emulate Touch with Mouse` is enabled)
 
-![](https://thumbs.gfycat.com/TautLawfulHerald-small.gif)
+![](https://thumbs.gfycat.com/TautLawfulHerald-size_restricted.gif)
 
 [Source of Demo Map](https://forums.wesnoth.org/viewtopic.php?t=40059)
 
