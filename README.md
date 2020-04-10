@@ -27,7 +27,7 @@ Godot Plugin for a touchscreen optimized camera control system for common 2D top
 
 # Short Documentation
 
-# export variables
+# Export Variables
 ```enabled : bool```
 
 enables functionallity of the PinchPanCamera Node 
@@ -62,3 +62,21 @@ deadzone of dragging
 ```show_debug_icon : bool``` 
 
 shows with the ppc icon the position of the `Position2D` for debugging purposes
+
+# Signals
+
+```zoom_in()``` 
+
+throws when user is zooming in
+
+```zoom_out()``` 
+
+throws when user is zooming out 
+
+```just_pressed()``` 
+
+throws when user touched the screen the first time before dragging
+
+```dragging()``` 
+
+throws when user is dragging the camera
