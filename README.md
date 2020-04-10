@@ -1,13 +1,13 @@
 # PinchPanCamera
-[![Version badge](https://img.shields.io/badge/Version-v0.2-green.svg)](http://paypal.me/divirad)  
+[![Version badge](https://img.shields.io/badge/Version-v0.2-green.svg)](https://paypal.me/divirad)  [![Version badge](https://img.shields.io/badge/Godot_Version-v3.2.stable-green.svg)](https://godotengine.org)  
 ![](https://img.shields.io/github/downloads/divirad/PinchPanCamera/total)
 ![](https://img.shields.io/github/stars/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/issues/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/forks/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/license/Divirad/PinchPanCamera) <br>
 	
-[![Author badge](https://img.shields.io/badge/Made_by-Divirad-inactive.svg)](http://divirad.com) 
-[![PayPal badge](https://img.shields.io/badge/Donate-PayPal-blue.svg)](http://paypal.me/divirad) <br>
+[![Author badge](https://img.shields.io/badge/Made_by-Divirad-inactive.svg)](https://divirad.com) 
+[![PayPal badge](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/divirad) <br>
 
 ![Icon](https://raw.githubusercontent.com/Divirad/PinchPanCamera/master/icon.png)
 
