@@ -83,13 +83,13 @@ func _input(event):
 	# Handle Touch
 	if event is InputEventScreenTouch:
 		if event.is_pressed() and !already_pressed:
-			start_position = get_norm_coordinate()
+			start_position = - get_norm_coordinate()
 			already_pressed = true
 		if !event.is_pressed():
 			already_pressed = false
 	if event is InputEventScreenDrag:
 		if camera.input_count == 1:
-			var coord = get_movement_vector_from(get_norm_coordinate())
+			var coord = get_movement_vector_from(-get_norm_coordinate())
 			position += coord
 
 	if  camera.input_count == 0:
@@ -99,7 +99,7 @@ func get_movement_vector_from(vec : Vector2) -> Vector2:
 	"""
 	calculates a vector for the movement
 	"""
-	return vec - start_position
+	return start_position - vec 
 
 func get_norm_coordinate() -> Vector2:
 	"""

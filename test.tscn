@@ -12,4 +12,6 @@ texture = ExtResource( 1 )
 
 [node name="PinchPanCamera" type="Position2D" parent="."]
 script = ExtResource( 2 )
+drag_deadzone = 500.0
 smoothing = true
+show_debug_icon = true

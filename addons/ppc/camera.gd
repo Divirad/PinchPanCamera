@@ -16,8 +16,8 @@ signal on_zoom(val)
 func _ready():
 	for i in range(MAX_POINTS):
 		points.append({pos = Vector2(), start_pos = Vector2(), state = false})
-	
-	connect("on_zoom", self, "zoom_this")	
+	connect("on_zoom", self, "zoom_this")
+
 func _input(event):
 	
 	if event is InputEventScreenDrag:
@@ -72,7 +72,7 @@ func zoom_this(val):
 		zoom.y = clamp(zoom.y + temp_zoom * .025, 0.4, 2)
 	
 func get_camera_center():
-    var vtrans = get_canvas_transform()
-    var top_left = -vtrans.get_origin() / vtrans.get_scale()
-    var vsize = get_viewport_rect().size
-    return top_left + 0.5*vsize/vtrans.get_scale()
+	var vtrans = get_canvas_transform()
+	var top_left = -vtrans.get_origin() / vtrans.get_scale()
+	var vsize = get_viewport_rect().size
+	return top_left + 0.5 * vsize/vtrans.get_scale()
