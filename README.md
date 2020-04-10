@@ -8,3 +8,5 @@
 
 Godot Plugin for a touchscreen optimized camera control system 
 for common 2D top-down strategy games.
+
+![](https://thumbs.gfycat.com/TautLawfulHerald-small.gif)
