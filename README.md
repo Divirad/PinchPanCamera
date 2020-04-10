@@ -1,5 +1,5 @@
 # PinchPanCamera
-[![Version badge](https://img.shields.io/badge/Version-v0.2-green.svg)](https://paypal.me/divirad)  [![Version badge](https://img.shields.io/badge/Godot_Version-v3.2.stable-green.svg)](https://godotengine.org)  <br>
+[![Version badge](https://img.shields.io/badge/Version-v0.1-green.svg)](https://paypal.me/divirad)  [![Version badge](https://img.shields.io/badge/Godot_Version-v3.2.stable-green.svg)](https://godotengine.org)  <br>
 
 ![](https://img.shields.io/github/downloads/divirad/PinchPanCamera/total)
 ![](https://img.shields.io/github/stars/Divirad/PinchPanCamera)
