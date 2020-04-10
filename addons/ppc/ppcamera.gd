@@ -33,6 +33,7 @@ export var smoothing : bool = false
 export var smoothing_speed : int = 10
 export var min_zoom_factor : float = 0.6
 export var max_zoom_factor: float = 2
+export var natural_slide : bool = true
 export var show_debug_icon : bool = false
 
 var shop
@@ -66,12 +67,14 @@ func _enter_tree():
 	if show_debug_icon:
 		var di = load("res://addons/ppc/testicon.tscn")
 		add_child(di.instance())
+	
+	#start_position = camera.get_camera_center() 
 
 func _input(event):
 	
 	# Handle MouseWheel
 	if event is InputEventMouseButton and event.is_pressed():
-
+		#print("PPC :: Zoom")
 		if event.button_index == BUTTON_WHEEL_UP:
 			if camera.zoom >= min_zoom:
 				camera.zoom -= Vector2(0.1, 0.1)
@@ -82,18 +85,30 @@ func _input(event):
 	
 	# Handle Touch
 	if event is InputEventScreenTouch:
+		
 		if event.is_pressed() and !already_pressed:
-			start_position = - get_norm_coordinate()
+			#print("PPC :: Virgin touch")
+			# minus if inverted
+			start_position = get_norm_coordinate()
 			already_pressed = true
 		if !event.is_pressed():
+			#print("PPC :: released")
 			already_pressed = false
+
 	if event is InputEventScreenDrag:
 		if camera.input_count == 1:
-			var coord = get_movement_vector_from(-get_norm_coordinate())
-			position += coord
-
+			#print("PPC :: Input no. 1")
+			position += get_movement_vector_from(get_local_mouse_position())
+			start_position = get_local_mouse_position()
+		#if camera.input_count == 1:
+		#	var coord = get_movement_vector_from(-get_norm_coordinate())
+		#	position += coord
+	
 	if  camera.input_count == 0:
+		print(position)
+		#print("PPC :: No Inputs")
 		position = camera.get_camera_center() 
+		print(position)
 
 func get_movement_vector_from(vec : Vector2) -> Vector2:
 	"""
@@ -105,7 +120,7 @@ func get_norm_coordinate() -> Vector2:
 	"""
 	gets the normalized coordinate of a touch
 	"""
-	return get_local_mouse_position() - camera.get_camera_center()
+	return get_global_mouse_position() - camera.get_camera_center()
 
 func invert_vector(vec : Vector2):
 	"""
