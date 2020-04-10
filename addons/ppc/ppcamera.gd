@@ -41,8 +41,16 @@ var start_position
 var already_pressed = false
 var min_zoom : Vector2 = Vector2(0, 0)
 var max_zoom : Vector2 = Vector2(0, 0)
+var naturalizer = 1
 
 var camera : Camera2D
+
+signal zoom_in()
+signal zoom_out()
+signal just_pressed()
+signal dragging()
+
+signal input_number(num)
 
 func _enter_tree():
 	"""
@@ -67,48 +75,48 @@ func _enter_tree():
 	if show_debug_icon:
 		var di = load("res://addons/ppc/testicon.tscn")
 		add_child(di.instance())
-	
-	#start_position = camera.get_camera_center() 
 
 func _input(event):
-	
-	# Handle MouseWheel
+	if natural_slide:
+		naturalizer = 1
+	else: 
+		naturalizer = -1
+		
+	# Handle MouseWheel for Zoom
 	if event is InputEventMouseButton and event.is_pressed():
-		#print("PPC :: Zoom")
 		if event.button_index == BUTTON_WHEEL_UP:
+			emit_signal("zoom_in")
 			if camera.zoom >= min_zoom:
 				camera.zoom -= Vector2(0.1, 0.1)
-
 		if event.button_index == BUTTON_WHEEL_DOWN:
+			emit_signal("zoom_out")
 			if camera.zoom <= max_zoom:
 				camera.zoom += Vector2(0.1, 0.1)
 	
 	# Handle Touch
 	if event is InputEventScreenTouch:
-		
 		if event.is_pressed() and !already_pressed:
-			#print("PPC :: Virgin touch")
-			# minus if inverted
-			start_position = get_norm_coordinate()
+			emit_signal("just_pressed")
+			start_position = get_norm_coordinate() * naturalizer
 			already_pressed = true
 		if !event.is_pressed():
-			#print("PPC :: released")
 			already_pressed = false
 
 	if event is InputEventScreenDrag:
 		if camera.input_count == 1:
-			#print("PPC :: Input no. 1")
-			position += get_movement_vector_from(get_local_mouse_position())
-			start_position = get_local_mouse_position()
-		#if camera.input_count == 1:
-		#	var coord = get_movement_vector_from(-get_norm_coordinate())
-		#	position += coord
+			emit_signal("input_number", 1)
+			
+			if natural_slide:
+				position += get_movement_vector_from(get_local_mouse_position())
+				start_position = get_local_mouse_position()
+			else:
+				var coord = get_movement_vector_from(-get_norm_coordinate())
+				position += coord
 	
 	if  camera.input_count == 0:
-		print(position)
-		#print("PPC :: No Inputs")
+		emit_signal("input_number", 1)
 		position = camera.get_camera_center() 
-		print(position)
+		
 
 func get_movement_vector_from(vec : Vector2) -> Vector2:
 	"""
@@ -120,8 +128,11 @@ func get_norm_coordinate() -> Vector2:
 	"""
 	gets the normalized coordinate of a touch
 	"""
-	return get_global_mouse_position() - camera.get_camera_center()
-
+	if natural_slide:
+		return get_global_mouse_position() - camera.get_camera_center()
+	else:
+		return get_local_mouse_position() - camera.get_camera_center()
+		
 func invert_vector(vec : Vector2):
 	"""
 	inverts a vector
