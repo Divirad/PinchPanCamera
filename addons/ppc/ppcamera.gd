@@ -17,7 +17,7 @@ for common 2D top-down strategy games.
 
 Licensed under MIT
 
-v. 0.0
+v. 0.1
 
 Author: Max Schmitt 
 		from
@@ -27,14 +27,15 @@ Author: Max Schmitt
 extends Position2D
 class_name PinchPanCamera, "icon.png"
 
-export var drag_deadzone_x : float = 0.1
-export var drag_deadzone_y : float = 0.1
+export var enable : bool = true
+export var natural_slide : bool = true
 export var current : bool = true
 export var smoothing : bool = false
 export var smoothing_speed : int = 10
 export var min_zoom_factor : float = 0.6
 export var max_zoom_factor: float = 2
-export var natural_slide : bool = true
+export var drag_deadzone_x : float = 0.1
+export var drag_deadzone_y : float = 0.1
 export var show_debug_icon : bool = false
 
 var shop
@@ -111,6 +112,8 @@ func _process(_delta):
 		naturalizer = -1
 func _input(event):
 	
+	if !enable:
+		return
 	# Handle MouseWheel for Zoom
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == BUTTON_WHEEL_UP:
