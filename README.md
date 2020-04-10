@@ -1,10 +1,15 @@
 # PinchPanCamera
-[![Version badge](https://img.shields.io/badge/Version-v0.1-green.svg)](http://paypal.me/divirad)  
+[![Version badge](https://img.shields.io/badge/Version-v0.2-green.svg)](http://paypal.me/divirad)  
 ![](https://img.shields.io/github/downloads/divirad/PinchPanCamera/total)
 ![](https://img.shields.io/github/stars/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/issues/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/forks/Divirad/PinchPanCamera)
 ![](https://img.shields.io/github/license/Divirad/PinchPanCamera) <br>
+	
+[![Author badge](https://img.shields.io/badge/Made_by-Divirad-inactive.svg)](http://divirad.com) 
+[![PayPal badge](https://img.shields.io/badge/Donate-PayPal-blue.svg)](http://paypal.me/divirad) <br>
+
+![Icon](https://raw.githubusercontent.com/Divirad/PinchPanCamera/master/icon.png)
 
 Godot Plugin for a touchscreen optimized camera control system for common 2D top-down strategy games. 
 (Works also with mouse when `Emulate Touch with Mouse` is enabled)
