@@ -4,3 +4,4 @@
 
 [node name="PinchPanCamera" type="Position2D"]
 script = ExtResource( 1 )
+drag_deadzone = 0.1
