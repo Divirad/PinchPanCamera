@@ -28,34 +28,35 @@ Godot Plugin for a touchscreen optimized camera control system for common 2D top
 # Short Documentation
 
 # Export Variables
-```enabled : bool```
+```Enable Pinch Pan : bool```
 
 enables functionallity of the PinchPanCamera Node 
 
-```natural_slide : bool```
-
-if false it inverts the input
+```Slide Mode : int```
+Select between Normal, only-Horizontal and only-Vertical slide Mode
 
 ```current : bool```
 
 if current is true, the PPC Node is the current Camera
 
+```natural slide : bool```
+
+if false it inverts the input
+
 ```smoothing : bool```
 
-enables smoothe dragging
+enables smooth dragging
 
 ```smoothing_speed : int```
 
 the smoothness while dragging
-
 
 ```min_zoom_factor : float```
 ```max_zoom_factor: float```
 
 zoom limit to prevent "infinite-zoom"
 
-```drag_deadzone_x : float```
-```drag_deadzone_y : float```
+```drag_deadzone : Vector2```
 
 deadzone of dragging
 
