@@ -30,7 +30,7 @@ class_name PinchPanCamera, "icon.png"
 export var enable_pinch_pan : bool = true
 export (int, "Normal", "Horizontal", "Vertical") var slide_mode = 0
 export var current : bool = true
-export var smoothing : bool = false
+export var smoothing : bool = true
 export var smoothing_speed : int = 10
 export var natural_slide : bool = true
 
