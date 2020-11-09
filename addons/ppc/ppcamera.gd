@@ -17,7 +17,7 @@ for common 2D top-down strategy games.
 
 Licensed under MIT
 
-v. 0.1
+v. 0.2
 
 Author: Max Schmitt 
 		from
@@ -29,6 +29,9 @@ class_name PinchPanCamera, "icon.png"
 
 export var enable : bool = true
 export var natural_slide : bool = true
+export var enable_x : bool = true
+export var enable_y : bool = true
+
 export var current : bool = true
 export var smoothing : bool = false
 export var smoothing_speed : int = 10
@@ -106,10 +109,13 @@ func _process(_delta):
 	if max_zoom != Vector2(max_zoom_factor, max_zoom_factor):
 		max_zoom = Vector2(max_zoom_factor, max_zoom_factor)
 	
+	# inverts inputs
 	if natural_slide and naturalizer != 1:
 		naturalizer = 1
 	elif !natural_slide and naturalizer != -1:
 		naturalizer = -1
+
+
 func _input(event):
 	
 	if !enable:
@@ -154,16 +160,26 @@ func get_movement_vector_from(vec : Vector2) -> Vector2:
 	"""
 	calculates a vector for the movement
 	"""
-	return start_position - vec 
+	var move_vec = start_position - vec 
+	
+	
+	if enable_x and !enable_y:
+		return Vector2(move_vec.x, 0)
+	elif !enable_x and enable_y:
+		return Vector2(0, move_vec.y)
+	else:
+		return move_vec
 
 func get_norm_coordinate() -> Vector2:
 	"""
 	gets the normalized coordinate of a touch
 	"""
+	var result 
 	if natural_slide:
-		return get_global_mouse_position() - camera.get_camera_center()
+		result = get_global_mouse_position() - camera.get_camera_center()
 	else:
-		return get_local_mouse_position() - camera.get_camera_center()
+		result = get_local_mouse_position() - camera.get_camera_center()
+	return result
 		
 func invert_vector(vec : Vector2):
 	"""
