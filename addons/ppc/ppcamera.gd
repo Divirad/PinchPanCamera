@@ -17,7 +17,7 @@ for common 2D top-down strategy games.
 
 Licensed under MIT
 
-v. 0.2
+v. 0.2.2
 
 Author: Max Schmitt 
 		from
@@ -27,18 +27,17 @@ Author: Max Schmitt
 extends Position2D
 class_name PinchPanCamera, "icon.png"
 
-export var enable : bool = true
-export var natural_slide : bool = true
-export var enable_x : bool = true
-export var enable_y : bool = true
-
+export var enable_pinch_pan : bool = true
+export (int, "Normal", "Horizontal", "Vertical") var slide_mode = 0
 export var current : bool = true
-export var smoothing : bool = false
+export var smoothing : bool = true
 export var smoothing_speed : int = 10
+export var natural_slide : bool = true
+
 export var min_zoom_factor : float = 0.6
 export var max_zoom_factor: float = 2
-export var drag_deadzone_x : float = 0.1
-export var drag_deadzone_y : float = 0.1
+export var drag_deadzone : Vector2 = Vector2(0.1, 0.1)
+
 export var show_debug_icon : bool = false
 
 var shop
@@ -69,10 +68,10 @@ func _enter_tree():
 	add_child(c.instance())
 	camera = get_node("camera")
 	
-	camera.drag_margin_left = drag_deadzone_x
-	camera.drag_margin_right = drag_deadzone_x
-	camera.drag_margin_top = drag_deadzone_y
-	camera.drag_margin_bottom = drag_deadzone_y
+	camera.drag_margin_left = drag_deadzone.x
+	camera.drag_margin_right = drag_deadzone.x
+	camera.drag_margin_top = drag_deadzone.y
+	camera.drag_margin_bottom = drag_deadzone.y
 	
 	camera.current = current
 	camera.smoothing_enabled = smoothing
@@ -84,15 +83,15 @@ func _enter_tree():
 
 func _process(_delta):
 	
-	if camera.drag_margin_left != drag_deadzone_x \
-	and camera.drag_margin_right != drag_deadzone_x:
-		camera.drag_margin_left = drag_deadzone_x
-		camera.drag_margin_right = drag_deadzone_x
+	if camera.drag_margin_left != drag_deadzone.x \
+	and camera.drag_margin_right != drag_deadzone.x:
+		camera.drag_margin_left = drag_deadzone.x
+		camera.drag_margin_right = drag_deadzone.x
 	
-	if camera.drag_margin_top != drag_deadzone_y \
-	and camera.drag_margin_bottom != drag_deadzone_y:
-		camera.drag_margin_top = drag_deadzone_y
-		camera.drag_margin_bottom = drag_deadzone_y
+	if camera.drag_margin_top != drag_deadzone.y \
+	and camera.drag_margin_bottom != drag_deadzone.y:
+		camera.drag_margin_top = drag_deadzone.y
+		camera.drag_margin_bottom = drag_deadzone.y
 	
 	if camera.current != current:
 		camera.current = current
@@ -118,7 +117,7 @@ func _process(_delta):
 
 func _input(event):
 	
-	if !enable:
+	if !enable_pinch_pan:
 		return
 	# Handle MouseWheel for Zoom
 	if event is InputEventMouseButton and event.is_pressed():
@@ -163,9 +162,9 @@ func get_movement_vector_from(vec : Vector2) -> Vector2:
 	var move_vec = start_position - vec 
 	
 	
-	if enable_x and !enable_y:
+	if slide_mode == 1:
 		return Vector2(move_vec.x, 0)
-	elif !enable_x and enable_y:
+	if slide_mode == 2:
 		return Vector2(0, move_vec.y)
 	else:
 		return move_vec
