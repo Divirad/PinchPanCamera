@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PinchPanCamera"
-run/main_scene="res://test.tscn"
+run/main_scene="res://addons/ppc/demo/test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
