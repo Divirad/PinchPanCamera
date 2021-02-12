@@ -24,11 +24,6 @@ config/name="PinchPanCamera"
 run/main_scene="res://test.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "ppc" )
