@@ -24,7 +24,7 @@ Author: Max Schmitt
 		Divirad - Kepper, Lösing, Schmitt GbR
 """
 
-@icon("res://res:/addons/ppc/icon.png")
+@icon("res://addons/ppc/icon.png")
 extends Marker2D
 class_name PinchPanCamera
 
