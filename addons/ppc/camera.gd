@@ -16,7 +16,7 @@ signal on_zoom(val)
 func _ready():
 	for i in range(MAX_POINTS):
 		points.append({pos = Vector2(), start_pos = Vector2(), state = false})
-	connect("on_zoom", self, "zoom_this")
+	connect("on_zoom",Callable(self,"zoom_this"))
 
 func _input(event):
 	

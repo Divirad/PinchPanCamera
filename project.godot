@@ -6,27 +6,18 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Position2D",
-"class": "PinchPanCamera",
-"language": "GDScript",
-"path": "res://addons/ppc/ppcamera.gd"
-} ]
-_global_script_class_icons={
-"PinchPanCamera": "res://addons/ppc/icon.png"
-}
+config_version=5
 
 [application]
 
 config/name="PinchPanCamera"
 run/main_scene="res://addons/ppc/demo/test.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "ppc" )
+enabled=PackedStringArray("ppc")
 
 [input_devices]
 
@@ -34,4 +25,4 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_environment="res://default_env.tres"
