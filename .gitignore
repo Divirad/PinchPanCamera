@@ -9,3 +9,5 @@ export_presets.cfg
 data_*/
 
 icon.png.import
+
+.godot
