@@ -12,8 +12,17 @@ config_version=5
 
 config/name="PinchPanCamera"
 run/main_scene="res://addons/ppc/demo/test.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
 
 [editor_plugins]
 
